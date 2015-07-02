@@ -6,18 +6,6 @@ muniButlerApp.controller('HomeController', function ($scope, $location, User, Au
   $scope.routes = User.routes;
   $scope.empty = Object.keys(User.routes).length === 0;
 
-  // does the user want to add a new route?
-  $scope.addnewroute = false;
-
-  $scope.showMap = true;
-
-  // button text
-  $scope.msg = "Add new route!";
-  $scope.msgChange = function () {
-    if ($scope.addnewroute) { $scope.msg = "Cancel"; }
-    else { $scope.msg = "Add new route!"; }
-  };
-
   // object for temporary user information
   $scope.user = {
     from: "Finding current location..."
