@@ -25,11 +25,6 @@ muniButlerApp.controller('HomeController', function ($scope, $location, User, Au
     $location.path('/routes');
   };
 
-  $scope.remove = function(route){
-    console.log(route);
-    User.removeRoute(route.id);
-  };
-
   // change latitude/longitude into actual addresses and update the from address
   function success(position) {
     var pos;
@@ -61,22 +56,6 @@ muniButlerApp.controller('HomeController', function ($scope, $location, User, Au
     };
     var map = new google.maps.Map(document.getElementById('routes-map'), mapOptions);
     directionsDisplay.setMap(map);
-  };
-
-  $scope.showOptions = function(savedRoute) {
-    console.log('THE SAVED ROUTE IS AS FOLLOWS: ', savedRoute);
-    var googleFormattedObject = {request: {travelMode: "TRANSIT"}, routes: [savedRoute.googleRouteObj]};
-
-    var mapOptions = {
-      zoom: 18,
-      center: new google.maps.LatLng(37.783724, -122.408978)
-    };
-
-    $scope.showMap = true;
-
-    // Create the map with the mapOptions object and render
-    GoogleMaps.resetMap();
-    GoogleMaps.renderNewMap(googleFormattedObject);
   };
 
   // =================================
