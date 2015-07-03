@@ -1,6 +1,7 @@
   <md-content layout-padding layout-sm="column">
     <!-- <map zoom="18" id="routes-map"></map> -->
-    <a ui-sref="home.form">Go Home</a>
+
+    <button ui-sref="home.form">Enter New Route</button>
 
     <h3>Trip</h3>
     <md-card>
@@ -19,6 +20,7 @@
 <md-card class="route-option" ng-repeat="route in model.routeOptions track by $index" ng-click="model.selectRoute(route)" ng-mouseover="model.showRoute($index)">
       <md-card-content>
         <div ng-repeat="lineInfo in route.lines" class="bus-number">{{ lineInfo[0] }}</div>
+        <change-color></change-color>
         <div class="duration">{{ route.duration }}</div>
         <div class="arrival-times" ng-show="route.arrivalTimes.length > 0">Arriving in
           <div class="time" ng-repeat="time in route.arrivalTimes track by $index">{{ time }}</div> minutes</div>
