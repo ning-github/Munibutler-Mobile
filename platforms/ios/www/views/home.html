@@ -1,11 +1,9 @@
   <md-content layout-padding layout-sm="column">
 
-    <!-- this view uses ng-show that hinges on if you have any stored routes OR clicked to "Add new route!"-->
-
     <!-- INPUT FORM: if user has no saved routes, show input form -->
       <map zoom="18" id="routes-map" class="map-home"></map>
-      <a ui-sref="home.form">Form</a>
-      <a ui-sref="home.display">Display</a>
+<!--       <a ui-sref="home.form">Form</a> -->
+      <!-- <a ui-sref="home.display">Display</a> -->
       <div ui-view>
 
       </div>
@@ -24,6 +22,7 @@
           <div class="bus-source">{{ route.from.split(',')[0] }}</div>
           <div class="bus-number" ng-repeat = "busNumber in route.route[0]">{{ busNumber[0] }}</div> -->
           <!-- <div class="bus-destination">{{ route.to.split(',')[0] }}</div> -->
+          <!-- <change-color></change-color> -->
           <!-- TODO: duration. style with different color depending on how long -->
           <!-- <div class="duration">{{ route.route[2] }}</div> 
           <div class="arrival-times" ng-show="route.route[3].length > 0">Arriving in

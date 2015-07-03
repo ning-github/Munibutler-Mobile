@@ -1,4 +1,4 @@
-muniButlerApp.controller('HomeController', function ($scope, $location, User, Autocomplete, GoogleMaps) {
+muniButlerApp.controller('HomeController', function ($scope, $state, User, Autocomplete, GoogleMaps) {
   // controller for the home page
   // author: Albert Tang
 
@@ -22,7 +22,7 @@ muniButlerApp.controller('HomeController', function ($scope, $location, User, Au
       from: $scope.user.from
     };
     // the RoutesController at /routes will handle this information
-    $location.path('/routes');
+    $state.go('home.display');
   };
 
   // change latitude/longitude into actual addresses and update the from address

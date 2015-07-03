@@ -1,4 +1,8 @@
-var muniButlerApp = angular.module('muniButler', ['ngMap', 'ngResource', 'ngRoute', 'ui.router', 'ngMaterial'])
+var muniButlerApp = angular.module('muniButler', ['ngMap', 
+  'ngResource', 
+  'ui.router', 
+  'ngMaterial',
+  'd3'])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $httpProvider.defaults.withCredentials = true;
 
@@ -7,11 +11,13 @@ var muniButlerApp = angular.module('muniButler', ['ngMap', 'ngResource', 'ngRout
   $stateProvider
     .state('home', {
       url: '/',
+      abstract: true,
       templateUrl: 'views/home.html',
-      controller: 'HomeController'
+      // controller: 'HomeController'
     })
     .state('home.form', {
-      url: '/form',
+      // url: '/form',
+      url: '',
       templateUrl:'templates/form.html',
       controller: 'HomeController'
     })
@@ -26,4 +32,5 @@ var muniButlerApp = angular.module('muniButler', ['ngMap', 'ngResource', 'ngRout
       controller: ''
     });
 });
+
 

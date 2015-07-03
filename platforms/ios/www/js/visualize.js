@@ -30,16 +30,15 @@ angular.module('d3', [])
 
     link: function(scope, element, attrs) {
       d3Service.d3().then(function(d3) {
-        var green = "#00FF00";
-        var yellowGreen = "#9ACD32";
-        var brown = "#B29600";
-        var red = "#FF0000";
+        var green = "#00ff00";
+        var yellow = "#ffff00";
+        var red = "#ff0000";
 
         //unique $index for each repeat
 
         var colorScale = d3.scale.linear()
-          .domain([0, 10, 20, 40])
-          .range([green, yellowGreen, brown, red]);
+          .domain([0, 20, 40])
+          .range([green, yellow, red]);
 
         d3.selectAll('.duration')
           .each(function(d, i){
