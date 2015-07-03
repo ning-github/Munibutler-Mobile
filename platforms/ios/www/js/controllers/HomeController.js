@@ -1,4 +1,4 @@
-muniButlerApp.controller('HomeController', function ($scope, $location, User, Autocomplete, GoogleMaps) {
+muniButlerApp.controller('HomeController', function ($scope, $state, User, Autocomplete, GoogleMaps, $cordovaGeolocation) {
   // controller for the home page
   // author: Albert Tang
 
@@ -13,6 +13,7 @@ muniButlerApp.controller('HomeController', function ($scope, $location, User, Au
 
   // has the autocomplete updated the input values?
   $scope.enter = false;
+
   // submit function
   $scope.submit = function (validation) {
     if (!validation) { return; }
@@ -22,7 +23,7 @@ muniButlerApp.controller('HomeController', function ($scope, $location, User, Au
       from: $scope.user.from
     };
     // the RoutesController at /routes will handle this information
-    $location.path('/routes');
+    $state.go('home.display');
   };
 
   // change latitude/longitude into actual addresses and update the from address
@@ -66,8 +67,18 @@ muniButlerApp.controller('HomeController', function ($scope, $location, User, Au
   Autocomplete.initialize($scope);
 
   // use HTML5 to find the current location
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(success, error);
-  }
+  // if (navigator.geolocation) {
+  //   navigator.geolocation.getCurrentPosition(success, error);
+  // }
+
+  document.addEventListener("deviceready", function () {
+    console.log('DEVICE IS READY');
+    var options = {
+      timeout: 10000,
+      enableHighAccuracy: false
+    };
+
+    $cordovaGeolocation.getCurrentPosition(options).then(success, error);
+  });
 
 });
