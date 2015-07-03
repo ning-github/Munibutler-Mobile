@@ -14,7 +14,7 @@ muniButlerApp.factory('Bus', function ($http, $rootScope) {
   var getBusArrivalTimes = function (busNumber, stopName, direction) {
     
     // Request route times for the bus from server
-    return $http.get($rootScope.serverUrl + 'api/bus', { 
+    return $http.get($rootScope.serverUrl + '/api/bus', { 
       params: {
         busNumber: busNumber,
         stopName: stopName,

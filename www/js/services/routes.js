@@ -1,6 +1,6 @@
 muniButlerApp.factory('Routes', function ($rootScope, $http) {
   var findTime = function () {
-    return $http.get($rootScope.serverUrl + 'api/bus/:number/:direction/:stopname', {
+    return $http.get($rootScope.serverUrl + '/api/bus/:number/:direction/:stopname', {
       withCredentials: true
     });
   };
