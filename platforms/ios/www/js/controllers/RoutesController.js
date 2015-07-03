@@ -95,7 +95,7 @@ muniButlerApp.controller('RoutesController', function ($scope, $state, $timeout,
     //   // redirect the user to home.html after selecting the return route
     //   $location.path('/');
     // }
-    $state.go('/displayChoices');
+    $state.go('home.display');
   };
 
   /**************
