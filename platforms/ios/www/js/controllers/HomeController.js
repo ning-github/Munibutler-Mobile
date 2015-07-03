@@ -6,18 +6,6 @@ muniButlerApp.controller('HomeController', function ($scope, $location, User, Au
   $scope.routes = User.routes;
   $scope.empty = Object.keys(User.routes).length === 0;
 
-  // does the user want to add a new route?
-  $scope.addnewroute = false;
-
-  $scope.showMap = true;
-
-  // button text
-  $scope.msg = "Add new route!";
-  $scope.msgChange = function () {
-    if ($scope.addnewroute) { $scope.msg = "Cancel"; }
-    else { $scope.msg = "Add new route!"; }
-  };
-
   // object for temporary user information
   $scope.user = {
     from: "Finding current location..."
@@ -35,11 +23,6 @@ muniButlerApp.controller('HomeController', function ($scope, $location, User, Au
     };
     // the RoutesController at /routes will handle this information
     $location.path('/routes');
-  };
-
-  $scope.remove = function(route){
-    console.log(route);
-    User.removeRoute(route.id);
   };
 
   // change latitude/longitude into actual addresses and update the from address
@@ -73,22 +56,6 @@ muniButlerApp.controller('HomeController', function ($scope, $location, User, Au
     };
     var map = new google.maps.Map(document.getElementById('routes-map'), mapOptions);
     directionsDisplay.setMap(map);
-  };
-
-  $scope.showOptions = function(savedRoute) {
-    console.log('THE SAVED ROUTE IS AS FOLLOWS: ', savedRoute);
-    var googleFormattedObject = {request: {travelMode: "TRANSIT"}, routes: [savedRoute.googleRouteObj]};
-
-    var mapOptions = {
-      zoom: 18,
-      center: new google.maps.LatLng(37.783724, -122.408978)
-    };
-
-    $scope.showMap = true;
-
-    // Create the map with the mapOptions object and render
-    GoogleMaps.resetMap();
-    GoogleMaps.renderNewMap(googleFormattedObject);
   };
 
   // =================================
