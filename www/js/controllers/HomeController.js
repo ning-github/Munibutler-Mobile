@@ -67,9 +67,9 @@ muniButlerApp.controller('HomeController', function ($scope, $state, User, Autoc
   Autocomplete.initialize($scope);
 
   // use HTML5 to find the current location
-  // if (navigator.geolocation) {
-  //   navigator.geolocation.getCurrentPosition(success, error);
-  // }
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
 
   document.addEventListener("deviceready", function () {
     console.log('DEVICE IS READY');
