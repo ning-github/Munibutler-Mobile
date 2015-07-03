@@ -5,7 +5,7 @@
  ** Authors: Danielle Knudson, Albert Tang
  */
 
-muniButlerApp.controller('RoutesController', function ($scope, $location, $timeout, User, GoogleMaps, Bus) {
+muniButlerApp.controller('RoutesController', function ($scope, $state, $timeout, User, GoogleMaps, Bus) {
   
   /**************
    ** VARIABLES **
@@ -13,9 +13,9 @@ muniButlerApp.controller('RoutesController', function ($scope, $location, $timeo
   
   $scope.model = {
     trip: User.trip,
-    going: true,
-    returning: false,
-    routeHeading: 'Departure Route',
+    // going: true,
+    // returning: false,
+    routeHeading: 'One Way',
     routeOptions: [],
     route: {
       from: User.trip.from,
@@ -39,29 +39,29 @@ muniButlerApp.controller('RoutesController', function ($scope, $location, $timeo
   // Will save the departure/return route for the user
   // Redirects to home.html
   $scope.model.selectRoute = function (route) {
-    console.log(route);
+    console.log('SELECTED ROUTE IN ROUTES CONTROLLER:', route);
 
     // var busNumber = route.lines[0][0];
     var busNumber = [];
 
     for (var i = 0; i < route.lines.length; i++) {
       busNumber.push(route.lines[i]);
-    };
+    }
 
     var stopName = route.lines[0][1];
     var duration = route.duration;
     var arrivalTimes = route.arrivalTimes;
 
     // the user hasn't selected a departure route
-    if ($scope.model.going && !$scope.model.returning) {
-      $scope.model.routeHeading = "Departure Route";
+     // if ($scope.model.going && !$scope.model.returning) {
+      // $scope.model.routeHeading = "Departure Route";
       $scope.model.route.route = [busNumber, stopName, duration, arrivalTimes];
-      User.addRoute($scope.model.route);
+      User.addRoute($scope.model.route, route.googleRouteObj);
       // change heading for when the user selects return route following
       // the selection of the departure route
-      $scope.model.routeHeading = "Return Route";
-      $scope.model.going = false;
-      $scope.model.returning = true;
+      // $scope.model.routeHeading = "Return Route";
+      // $scope.model.going = false;
+      // $scope.model.returning = true;
       // get the route options for the returning route
       // by flipping the departure/destination addresses
 
@@ -73,16 +73,29 @@ muniButlerApp.controller('RoutesController', function ($scope, $location, $timeo
       });
 
       // the user has selected the departure and is now selecting the return route
-    } else if (!$scope.model.going && $scope.model.returning) {
-      $scope.model.route.route = [busNumber, stopName, duration, arrivalTimes];
-      User.addRoute($scope.model.route);
-      // reset variables so that the user can select 
-      // the departure route for the next route entered on home.html
-      $scope.model.returning = false;
-      $scope.model.going = true;
-      // redirect the user to home.html after selecting the return route
-      $location.path('/');
-    }
+    // } else if (!$scope.model.going && $scope.model.returning) {
+    //   $scope.model.route.route = [busNumber, stopName, duration, arrivalTimes];
+
+    //   // flip to and from to for saving return route
+    //   var temp = $scope.model.route.from;
+    //   $scope.model.route.from = $scope.model.route.to;
+    //   $scope.model.route.to = temp;
+
+    //   // add return route
+    //   User.addRoute($scope.model.route, route.googleRouteObj);
+
+    //   // reset to and from back to original state
+    //   $scope.model.route.from = User.trip.from;
+    //   $scope.model.route.to = User.trip.to;
+
+    //   // reset variables so that the user can select 
+    //   // the departure route for the next route entered on home.html
+    //   $scope.model.returning = false;
+    //   $scope.model.going = true;
+    //   // redirect the user to home.html after selecting the return route
+    //   $location.path('/');
+    // }
+    $state.go('home.display');
   };
 
   /**************
@@ -91,9 +104,9 @@ muniButlerApp.controller('RoutesController', function ($scope, $location, $timeo
 
   // If the user hasn't entered a departure or destination route,
   // the user should be redirected to the home page 
-  if (!$scope.model.route.to || !$scope.model.route.from) {
-    $location.path('/');
-  }
+  // if (!$scope.model.route.to || !$scope.model.route.from) {
+  //   $location.path('/');
+  // }
   // If the user has departure and destinate addresses, get the route
   // options for the departure route
   $timeout(function(){

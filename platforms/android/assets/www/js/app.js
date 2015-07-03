@@ -1,22 +1,38 @@
-var muniButlerApp = angular.module('muniButler', ['ngMap', 'ngResource', 'ngRoute', 'ngMaterial'])
-.config(function($routeProvider, $httpProvider) {
+var muniButlerApp = angular.module('muniButler', [
+  'ngMap', 
+  'ngResource', 
+  'ngRoute', 
+  'ui.router', 
+  'ngMaterial',
+  'ngCordova'
+])
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $httpProvider.defaults.withCredentials = true;
 
+  $urlRouterProvider.otherwise('/');
 
-  $routeProvider
-    .when('/', {
+  $stateProvider
+    .state('home', {
+      url: '/',
+      abstract: true,
       templateUrl: 'views/home.html',
+      // controller: 'HomeController'
+    })
+    .state('home.form', {
+      // url: '/form',
+      url: '',
+      templateUrl:'templates/form.html',
       controller: 'HomeController'
     })
-    .when('/routes', {
+    .state('home.display', {
+      url: '/routes',
       templateUrl: 'views/routes.html',
       controller: 'RoutesController'
     })
-    .when('/login', {
+    .state('/login', {
+      url: '/login',
       templateUrl: 'views/login.html',
       controller: ''
-    })
-    .otherwise({redirectTo: '/'});
-    // Your code here
-})
+    });
+});
 

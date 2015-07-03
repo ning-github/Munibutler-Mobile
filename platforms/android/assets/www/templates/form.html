@@ -1,0 +1,15 @@
+<div>  
+  <form name="addressform" ng-submit="enter" novalidate>
+    <!-- from address, which searches for current address -->
+    <md-input-container md-no-float>
+      <label>From</label>
+      <input class="autocomplete" type="text" ng-model="user.from" placeholder="" required>
+    </md-input-container>
+    <!-- to address -->
+    <md-input-container md-no-float>
+      <label>To</label>
+      <input class="autocomplete" type="text" ng-model="user.to" placeholder="" required>
+    </md-input-container>
+  </form>
+  <md-button class="md-raised btn submit" ng-click="submit(addressform.$valid)" id="go">Go!</md-button>
+</div>
