@@ -9,9 +9,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-// auth reqs
-var session = require('express-session');
-var passport = require('passport');
+// // auth reqs
+// var session = require('express-session');
+// var passport = require('passport');
 
 // database
 var db = require('./config/db');
@@ -25,22 +25,29 @@ var busRouter = require('./routes/bus');
 
 var app = express();
 var user = {};
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
 app.use(logger('dev'));
-app.use(cookieParser('mySecretKey'));
+// app.use(cookieParser('mySecretKey'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use(session({
-  secret: 'mySecretKey',
-  resave: false,
-  saveUninitialized: true
-}));
+// app.use(session({
+//   secret: 'mySecretKey',
+//   resave: false,
+//   saveUninitialized: true
+// }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 // uncomment after placing your favicon in /public
 // app.use(favicon(__dirname + '/public/favicon.ico'));
 // view engine setup
