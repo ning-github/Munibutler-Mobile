@@ -7,11 +7,13 @@ var muniButlerApp = angular.module('muniButler', ['ngMap', 'ngResource', 'ngRout
   $stateProvider
     .state('home', {
       url: '/',
+      abstract: true,
       templateUrl: 'views/home.html',
-      controller: 'HomeController'
+      // controller: 'HomeController'
     })
     .state('home.form', {
-      url: '/form',
+      // url: '/form',
+      url: '',
       templateUrl:'templates/form.html',
       controller: 'HomeController'
     })

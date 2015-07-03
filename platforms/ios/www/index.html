@@ -8,11 +8,13 @@
   <!-- build:css dist/style.css -->
   <link rel="stylesheet" type="text/css" href="lib/angular-material.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="lib/ionic/css/ionic.min.css">
   <!-- endbuild -->
   <link rel="icon" type="image/png" href="favicon.png">
   <script src='https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDpTlyStzFAMtoV42eAZj6jDU_xKpUpbs4'></script>
   <!-- build:js dist/lib.js -->
-  <script src="lib/angular.min.js"></script>
+  <!-- <script src="lib/angular.min.js"></script> -->
+  <script src="lib/ionic/js/ionic.bundle.min.js"></script>
   <script src="lib/angular-ui-router.min.js"></script>
   <script src="lib/angular-route.min.js"></script>
   <script src="lib/angular-resource.min.js"></script>
@@ -46,10 +48,11 @@
         Sign in with {{ option.name }}
       </md-button>
     </div>
-    <img src="img/munibutler-logo.svg" alt="munibutler logo" class="logo"/>
-    <h1 class="logo-name">MuniButler</h1>
-	  <div ui-view>
-	  </div>
+    <div class="bar bar-header bar-light">
+      <img src="img/munibutler-logo.svg" alt="munibutler logo" class="logo"/>
+      <h1 class="logo-name">MuniButler</h1>
+    </div>
+	  <div ui-view></div>
 </body>
 
 </html>
