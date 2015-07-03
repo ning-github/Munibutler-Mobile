@@ -45,6 +45,13 @@ angular.module('d3', [])
 
             var minutes = this.textContent.split(' ')[0];
             console.log('SCOPE: ', scope);
+
+            // if the format comes back with 'hour' in it
+            if (this.textContent.indexOf('hour') !== -1){
+              // set the minutes to be max red by using 60
+              minutes = 60;
+            }
+
             d3.select(this)
               .style('color', colorScale(minutes));
           });
