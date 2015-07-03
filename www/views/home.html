@@ -4,23 +4,11 @@
 
     <!-- INPUT FORM: if user has no saved routes, show input form -->
       <map zoom="18" id="routes-map" class="map-home"></map>
-    <div>  
-      <form name="addressform" ng-submit="enter" novalidate>
-        <!-- from address, which searches for current address -->
-        <md-input-container md-no-float>
-          <label>From</label>
-          <input class="autocomplete" type="text" ng-model="user.from" placeholder="" required>
-        </md-input-container>
-        <!-- to address -->
-        <md-input-container md-no-float>
-          <label>To</label>
-          <input class="autocomplete" type="text" ng-model="user.to" placeholder="" required>
-        </md-input-container>
-      </form>
-      <md-button class="md-raised btn submit" ng-click="submit(addressform.$valid)" id="go">Go!</md-button>
-      <!-- map -->
-      <!-- saved routes -->
-    </div>
+      <a ui-sref="home.form">Form</a>
+      <a ui-sref="home.display">Display</a>
+      <div ui-view>
+
+      </div>
 
 
     <!-- /* MY ROUTES: if user has saved routes, hide input form -->
