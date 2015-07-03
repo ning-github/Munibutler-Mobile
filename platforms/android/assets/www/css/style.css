@@ -6,8 +6,7 @@
 ************************************************************/
 
 body {
-
-  padding: 20px 50px 50px;
+  padding: 10px;
 	color: #5d4f4f;
 }
 
@@ -23,18 +22,30 @@ a {
 
 map {
   width: 100%;
-  height: 300px;
-  position: relative;
+  height: 350px;
+  float: top;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  text-margins: 30px;
 }
 
 .login-logout {
 	float: right;
 }
+
+.to-from {
+  margin-bottom: 0px;
+}
+
 .logo-name {
-	text-transform: uppercase;
+  text-transform: uppercase;
 	letter-spacing: -0.05em;
-	margin-top: 0.5em;
-	margin-bottom: 0;
+  width: 230px;
+  margin: 0px 0px 10px 50px;
 }
 
 md-content.ng-scope.md-default-theme {
@@ -50,7 +61,8 @@ md-content.ng-scope.md-default-theme {
 ************************************************************
 ************************************************************/
 .logo {
-width: 96px;
+  width: 40px;
+  position: absolute;
 }
 
 
@@ -63,15 +75,20 @@ width: 96px;
 }
 
 .md-raised#go {
- width: 100%;
+  width: 100%;
+  height: 40px;
 	background-color: #CC0066;
 	color: white;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 15px;
+  border-radius: 10px;
 }
 
 .md-raised.md-primary.btn.login.google,
 .md-raised.md-primary.btn.login.facebook,
 .md-raised.md-primary.btn.logout {
-  background-color: silver;
+  background-color: black;
   color: #FFFFFF;
 }
 
@@ -82,7 +99,7 @@ h3 {
 
 .md-raised.btn.submit {
   float: right;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   margin-right: 0;
   top: -10px;
 }

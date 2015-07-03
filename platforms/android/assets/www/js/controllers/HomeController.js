@@ -1,19 +1,10 @@
-muniButlerApp.controller('HomeController', function ($scope, $location, User, Autocomplete, GoogleMaps) {
+muniButlerApp.controller('HomeController', function ($scope, $state, User, Autocomplete, GoogleMaps, $cordovaGeolocation) {
   // controller for the home page
   // author: Albert Tang
 
   // grab any saved route information from the User factory
   $scope.routes = User.routes;
   $scope.empty = Object.keys(User.routes).length === 0;
-
-  // does the user want to add a new route?
-  $scope.addnewroute = false;
-  // button text
-  $scope.msg = "Add new route!";
-  $scope.msgChange = function () {
-    if ($scope.addnewroute) $scope.msg = "Cancel";
-    else $scope.msg = "Add new route!";
-  };
 
   // object for temporary user information
   $scope.user = {
@@ -22,22 +13,18 @@ muniButlerApp.controller('HomeController', function ($scope, $location, User, Au
 
   // has the autocomplete updated the input values?
   $scope.enter = false;
+
   // submit function
   $scope.submit = function (validation) {
-    if (!validation) return;
+    if (!validation) { return; }
     // update User information in the User factory
     User.trip = {
       to: $scope.user.to,
       from: $scope.user.from
     };
     // the RoutesController at /routes will handle this information
-    $location.path('/routes');
+    $state.go('home.display');
   };
-
-  $scope.remove = function(route){
-    console.log(route);
-    User.removeRoute(route.id);
-  }
 
   // change latitude/longitude into actual addresses and update the from address
   function success(position) {
@@ -83,5 +70,15 @@ muniButlerApp.controller('HomeController', function ($scope, $location, User, Au
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(success, error);
   }
+
+  document.addEventListener("deviceready", function () {
+    console.log('DEVICE IS READY');
+    var options = {
+      timeout: 10000,
+      enableHighAccuracy: false
+    };
+
+    $cordovaGeolocation.getCurrentPosition(options).then(success, error);
+  });
 
 });
