@@ -1,5 +1,4 @@
 muniButlerApp.controller('HomeController', function ($scope, $state, User, Autocomplete, GoogleMaps, $cordovaGeolocation) {
-
   // controller for the home page
   // author: Albert Tang
 
@@ -59,6 +58,18 @@ muniButlerApp.controller('HomeController', function ($scope, $state, User, Autoc
     var map = new google.maps.Map(document.getElementById('routes-map'), mapOptions);
     directionsDisplay.setMap(map);
   };
+
+  // ROUTE SELECTION TAP
+  $scope.disableTap = function(){
+    console.log('disa');
+    container = document.getElementsByClassName('pac-container');
+    // disable ionic data tab
+    angular.element(container).attr('data-tap-disabled', 'true');
+    // leave input field if google-address-entry is selected
+    angular.element(container).on("click", function(){
+        document.getElementById('route-choice').blur();
+    });
+  }
 
   // =================================
   //   FUNCTIONS THAT RUN ON LOAD
