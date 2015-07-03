@@ -1,4 +1,5 @@
 muniButlerApp.controller('HomeController', function ($scope, $state, User, Autocomplete, GoogleMaps, $cordovaGeolocation) {
+
   // controller for the home page
   // author: Albert Tang
 
