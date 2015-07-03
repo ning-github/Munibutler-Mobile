@@ -4,8 +4,8 @@ var muniButlerApp = angular.module('muniButler', [
   'ngRoute', 
   'ui.router', 
   'ngMaterial',
-  'ngCordova'
-])
+  'ngCordova',
+  'd3'])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $httpProvider.defaults.withCredentials = true;
 
@@ -35,4 +35,5 @@ var muniButlerApp = angular.module('muniButler', [
       controller: ''
     });
 });
+
 
