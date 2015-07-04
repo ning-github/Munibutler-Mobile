@@ -15,7 +15,7 @@ muniButlerApp.controller('RoutesController', function ($scope, $state, $timeout,
     trip: User.trip,
     // going: true,
     // returning: false,
-    routeHeading: 'One Way',
+    routeHeading: 'Routes',
     routeOptions: [],
     route: {
       from: User.trip.from,

@@ -7,7 +7,7 @@ var muniButlerApp = angular.module('muniButler', [
   'ngCordova',
   'd3'])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
-  $httpProvider.defaults.withCredentials = true;
+  // $httpProvider.defaults.withCredentials = true;
 
   $urlRouterProvider.otherwise('/');
 
@@ -34,6 +34,9 @@ var muniButlerApp = angular.module('muniButler', [
       templateUrl: 'views/login.html',
       controller: ''
     });
+})
+.run(function ($rootScope) {
+  $rootScope.serverUrl = 'https://6ba84954.ngrok.com';
 });
 
 
