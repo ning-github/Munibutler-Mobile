@@ -41,6 +41,7 @@ angular.module('d3', [])
           .domain([0, 10, 20, 40])
           .range([green, yellowGreen, brown, red]);
 
+
         d3.selectAll('.duration')
           .each(function(d, i){
 
