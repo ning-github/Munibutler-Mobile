@@ -38,6 +38,3 @@ var muniButlerApp = angular.module('muniButler', [
 .run(function ($rootScope) {
   $rootScope.serverUrl = 'https://6ba84954.ngrok.com';
 });
-
-
-

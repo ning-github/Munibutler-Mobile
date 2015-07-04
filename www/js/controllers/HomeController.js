@@ -61,15 +61,17 @@ muniButlerApp.controller('HomeController', function ($scope, $state, User, Autoc
 
   // ROUTE SELECTION TAP
   $scope.disableTap = function(){
-    console.log('disa');
-    container = document.getElementsByClassName('pac-container');
-    // disable ionic data tab
+    var container = document.getElementsByClassName('pac-container');
+    // disable ionic data tap
     angular.element(container).attr('data-tap-disabled', 'true');
     // leave input field if google-address-entry is selected
     angular.element(container).on("click", function(){
-        document.getElementById('route-choice').blur();
+      // handle closing that field   
+      console.log(this);     
+      // document.getElementById('to-choice').blur();
+      document.getElementById('from-choice').blur();
     });
-  }
+  };
 
   // =================================
   //   FUNCTIONS THAT RUN ON LOAD

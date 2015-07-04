@@ -1,14 +1,14 @@
-<div>  
+<div>
   <form name="addressform" ng-submit="enter" novalidate>
     <!-- from address, which searches for current address -->
     <md-input-container md-no-float>
       <label>From</label>
-      <input class="autocomplete" type="text" ng-model="user.from" placeholder="" required ng-focus="disableTap()">
+      <input class="autocomplete" type="text" ng-model="user.from" placeholder="" required ng-focus="disableTap()" id="from-choice">
     </md-input-container>
     <!-- to address -->
     <md-input-container md-no-float>
       <label>To</label>
-      <input id='route-choice' class="autocomplete" type="text" ng-model="user.to" placeholder="" required ng-focus="disableTap()">
+      <input class="autocomplete" type="text" ng-model="user.to" placeholder="" required ng-focus="disableTap()" id="to-choice">
     </md-input-container>
   </form>
   <md-button class="md-raised btn submit" ng-click="submit(addressform.$valid)" id="go">Go!</md-button>
